@@ -1,0 +1,55 @@
+{% load static %}
+
+<nav class="navbar has-background-black is-fixed-top" role="navigation" aria-label="main navigation">
+
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="{% static 'blog/images/uptheanticslogo.svg' %}" alt="Up the Antics Logo">
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+
+    <!-- hidden on mobile -->
+    <div class="navbar-start">
+      <!-- navbar items -->
+      <a class="navbar-item has-text-antics-orange" href="/">
+        <p class="has-text-antics-orange has-text-centered">Home</p>
+      </a>
+      <a class="navbar-item has-text-antics-orange" href="/blog">
+        <p class="has-text-antics-orange has-text-centered">Blog</p>
+      </a>
+      <a class="navbar-item has-text-antics-orange" href="/events">
+        <p class="has-text-antics-orange has-text-centered">Events</p>
+      </a>
+      <a class="navbar-item has-text-antics-orange" href="/about-us">
+        <p class="has-text-antics-orange has-text-centered">About</p>
+      </a>
+    </div>
+
+    <div class="navbar-end is-hidden-touch">
+      <a class="navbar-item" href="https://www.facebook.com/UpAntics/?fref=ts">
+        <i class="fab fa-facebook has-text-antics-orange"></i>
+      </a>
+      <a class="navbar-item" href="https://twitter.com/Up_TheAntics?lang=en">
+        <i class="fab fa-twitter has-text-antics-orange"></i>
+      </a>
+      <a class="navbar-item" href="https://www.youtube.com/channel/UCcUx5R1nJfnEuYbyY0cheOA">
+        <i class="fab fa-youtube has-text-antics-orange"></i>
+      </a>
+      <a class="navbar-item" href="https://www.instagram.com/uptheantics/">
+        <i class="fab fa-instagram has-text-antics-orange"></i>
+      </a>
+      <a class="navbar-item" href="https://soundcloud.com/uptheantics">
+        <i class="fab fa-soundcloud has-text-antics-orange"></i>
+      </a>
+    </div>
+
+  </div>
+
+</nav>

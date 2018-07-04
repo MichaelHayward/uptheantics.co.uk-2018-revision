@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+<div class="events-content">
+  <div class="has-background-black-ter">
+    <section class="hero">
+      <div class="hero-body has-background-antics-orange">
+        <h1 class="title has-text-light has-text-weight-light">{{ page.title }}</h1>
+        <div class="intro subtitle has-text-white has-text-weight-light">
+          <br>
+          {{ page.intro|striptags|safe }}
+        </div>
+      </div>
+    </section>
+    <br>
+    <div class="tile is-ancestor">
+      <div class="events-list tile is-vertical">
+        {% if self.get_children.live %}
+          {% for page in self.get_children.specific %}
+          <div class="has-background-grey-darker has-text-light event-box tile is-parent">
+
+            <div class="tile is-child is-6 event-box-image">
+                {% image page.representative_image width-500 %}
+            </div>
+
+            <div class="tile is-child is-6 event-box-text">
+              <div class="">
+                <a href="{% pageurl page %}" class="is-size-4 has-text-white">{{ page.title }}</a>
+                <p class="is-size-5">{{ page.gig_date|date:"d M Y" }} | {{ page.gig_location }} | £{{ page.price }}</p>
+              </div>
+
+              <p>{{ page.intro }}</p>
+              <div class="event-link-container">
+                {% if page.ticket_link != "https://www.uptheantics.co.uk" %}
+                <a class="button-link" href="{{ page.ticket_link }}" target="blank">Book Now</a>
+                {% endif %}
+                {% if page.location_link != "https://www.uptheantics.co.uk" %}
+                <a class="button-link" href="{{ page.location_link }}" target="blank"><i class="fas fa-map-marker-alt"></i></a>
+                {% endif %}
+              </div>
+
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <h2 class="subtitle no-events-msg has-text-weight-light has-text-light">Seems like there's nothing booked in right now. Stay tuned for updates!</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+{% endblock %}

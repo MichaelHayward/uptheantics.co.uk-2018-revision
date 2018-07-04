@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+<div>
+  <video class="background-video" src="{% static 'home/video/showreel.mp4' %}" autoplay loop muted></video>
+  <div class="overlay"></div>
+</div>
+
+
+<div class="container has-text-centered at-least-full-height">
+  <img id="home-logo" class="spinney-thing" src="{% static 'blog/images/uptheanticslogo.svg' %}" alt="Up the Antics Logo">
+  <br>
+  <div id="site-tagline" class="has-text-centered">
+    {{ page.body|richtext }}
+  </div>
+</div>
+
+
+
+{% endblock %}

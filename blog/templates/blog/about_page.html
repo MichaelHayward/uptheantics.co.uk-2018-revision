@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load static %}
+
+{% block content %}
+  <div class="about-content">
+    <section class="hero">
+      <div class="hero-body has-background-antics-orange">
+        <h1 class="title has-text-light has-text-weight-light">{{ page.title }}</h1>
+        <div class="intro subtitle has-text-weight-light">{{ page.intro|striptags|safe }}</div>
+      </div>
+    </section>
+    <div class="has-background-black-ter text-padding">
+      <br>
+      {{ page.body|richtext }}
+      <div class="bio-container">
+        {% for page in self.get_children.specific %}
+        <div class="bio-content has-background-grey-darker">
+          <figure class="bio-image">
+            {% image page.representative_image width-300 %}
+          </figure>
+          <div class="bio-ui">
+            <h2 class="has-text-white">{{ page.title }}</h2>
+            <a class="accordion-button" name="accordion"><img src="{% static 'blog/images/ui_triangle.png' %}" alt="Expand to find out more"></a>
+          </div>
+          <p class="accordion-content accordion-hidden">
+            {{ page.description|striptags|safe }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

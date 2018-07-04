@@ -1,0 +1,55 @@
+{% load static wagtailuserbar %}
+{% load wagtailcore_tags %}
+
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+
+        <meta property="og:title"
+        content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}"/>
+        <meta property="og:site_name" content="Up the Antics"/>
+        <meta property="og:url" content="http://uptheantics.co.uk" />
+        {% if self.search_description %}
+        <meta property="og:description" content="Bristol sketch comedy and improv"/>
+        {% endif %}
+        <meta property="fb:app_id" content="475450252879138" />
+
+
+        <link rel="icon"
+              type="image/png"
+              href="{% static 'blog/images/uptheanticslogo.svg' %}">
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/animations.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %} has-text-light has-background-black-bis has-navbar-fixed-top">
+        {% wagtailuserbar %}
+        {% include 'includes/navbar.html' %}
+        <main>
+          {% block content %}{% endblock %}
+        </main>
+        {% include 'includes/footer.html' %}
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+    </body>
+</html>

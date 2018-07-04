@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+    {% if request.GET.tag|length %}
+        <h1 class="title has-text-light has-text-weight-light">Showing pages tagged "{{ request.GET.tag }}"</h1>
+    {% endif %}
+
+    {% for blogpage in blogpages %}
+
+          <div class="box">
+              <h2 class="subtitle"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></h2><br />
+              {% with blogpage.main_image as main_image %}
+                {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
+              {% endwith %}
+              <p><i>{{ blogpage.intro }}</i></p>
+              <small>Revised: {{ blogpage.latest_revision_created_at }}</small><br />
+              {% if blogpage.author %}
+                <p>By {{ blogpage.author }}</p>
+              {% endif %}
+          </div>
+
+    {% empty %}
+        No pages found with that tag.
+    {% endfor %}
+
+{% endblock %}

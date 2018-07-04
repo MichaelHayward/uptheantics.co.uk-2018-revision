@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+
+
+  <!-- {% for item in page.gallery_images.all %}
+    <div style="float:left; margin:10px">
+      {% image item.image fill-320x240 %}
+      <p>{{ item.caption }}</p>
+    </div>
+  {% endfor %}
+ -->
+  <div class="blog-content">
+    <div class="article-centered  blog-output">
+      <section class="hero">
+      <div class="hero-body has-background-antics-orange">
+        <h1 class="title has-text-light has-text-weight-light">{{ page.title }}</h1>
+        <div class="intro subtitle has-text-light has-text-weight-light">{{ page.intro }}</div>
+        <div class="post-info is-italic">
+          {% if page.author %}
+          <small>By {{ page.author }} on {{ page.date }}</small>
+          {% else %}
+          <small>By Up the Antics on {{ page.date }}</small>
+          {% endif %}
+          <br>
+          {% if page.tags.all.count %}
+            {% for tag in page.tags.all %}
+                <a href="{% slugurl 'tags' %}?tag={{ tag }}"><span class="tag is-info is-rounded">{{ tag }}</span></a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      </section>
+
+      <div class="featured-image-container">
+        {% image page.representative_image height-500 %}
+      </div>
+
+      <div class="text-padding">
+        {{ page.body|richtext }}
+        <p class="apres-post-buttons">
+          <a href="{{ page.get_parent.url }}" class="button-link">Return to Blog</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

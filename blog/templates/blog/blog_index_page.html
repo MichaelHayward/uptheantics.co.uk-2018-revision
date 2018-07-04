@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+<div class="blog-content has-background-black-ter">
+  <section class="hero">
+    <div class="hero-body has-background-antics-orange blog-index-hero">
+      <h1 class="title has-text-light has-text-weight-light">{{ page.title }}</h1>
+      <div class="intro subtitle has-text-light has-text-weight-light">{{ page.intro }}</div>
+    </div>
+  </section>
+  <br>
+  <div class="tile is-ancestor">
+
+    <div class="tile">
+
+      {% if recent_posts.0 %}
+      <div class="tile has-background-grey-darker is-vertical featured-tile">
+        <figure class="image is-16by9 has-background-black">
+          {% if recent_posts.0.specific.representative_image %}
+            {% image recent_posts.0.specific.representative_image fill-650x370 %}
+            {% else %}
+            <img src="{% static 'blog/images/uptheanticslogo.svg' %}" alt="Up the Antics' Logo">
+          {% endif %}
+        </figure>
+        <div class="text-padding text-compressed">
+          <p class="title"><a href="{% pageurl recent_posts.0.specific %}" class="index-article-title"> {{ recent_posts.0.title }}</a></p>
+          <p class="has-text-weight-light has-text-grey">{{ recent_posts.0.specific.intro }}</p>
+          <br>
+          <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.0.specific.author }}</span> | {{ recent_posts.0.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+    <div class="tile">
+      <div class="tile is-vertical">
+        {% if recent_posts.1 %}
+        <div class="tile has-background-grey-darker featured-tile">
+          <div class="tile is-vertical">
+            <div class="text-padding text-compressed">
+                <p class="title"><a href="{% pageurl recent_posts.1.specific %}" class="index-article-title">{{ recent_posts.1.title }}</a></p>
+                <p class="has-text-weight-light has-text-grey">{{ recent_posts.1.specific.intro }}</p>
+                <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.1.specific.author }}</span> | {{ recent_posts.1.specific.date }}</p>
+            </div>
+          </div>
+          <div class="tile is-vertical remove-at-smallscreen is-hidden-touch">
+            <figure class="image is-square index-article-image">
+              {% if recent_posts.1.specific.representative_image %}
+                {% image recent_posts.1.specific.representative_image fill-200x200 %}
+                {% else %}
+                <img src="{% static 'blog/images/uptheanticslogo.svg' %}" alt="Up the Antics' Logo">
+              {% endif %}
+            </figure>
+          </div>
+        </div>
+        {% endif %}
+
+
+
+        {% if recent_posts.2 %}
+        <div class="tile has-background-grey-darker featured-tile index-article-image">
+          <div class="tile is-vertical">
+            <div class="text-padding text-compressed">
+                <p class="title"><a href="{% pageurl recent_posts.2.specific %}" class="index-article-title">{{ recent_posts.2.title }}</a></p>
+                <p class="has-text-weight-light has-text-grey">{{ recent_posts.2.specific.intro }}</p>
+                <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.2.specific.author }}</span> | {{ recent_posts.2.specific.date }}</p>
+            </div>
+          </div>
+          <div class="tile is-vertical remove-at-smallscreen is-hidden-touch">
+            <figure class="image is-square index-article-image">
+              {% if recent_posts.2.specific.representative_image %}
+                {% image recent_posts.2.specific.representative_image fill-200x200 %}
+                {% else %}
+                <img src="{% static 'blog/images/uptheanticslogo.svg' %}" alt="Up the Antics' Logo">
+              {% endif %}
+            </figure>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="tile is-ancestor is-vertical index-article-subordinate-container">
+
+    <div class="tile secondary-postbox">
+      {% if recent_posts.3 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.3.specific %}" class="index-article-title">{{ recent_posts.3.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.3.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.3.specific.author }}</span> | {{ recent_posts.3.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if recent_posts.4 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.4.specific %}" class="index-article-title">{{ recent_posts.4.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.4.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.4.specific.author }}</span> | {{ recent_posts.4.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if recent_posts.5 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.5.specific %}" class="index-article-title">{{ recent_posts.5.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.5.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.5.specific.author }}</span> | {{ recent_posts.6.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="tile">
+      {% if recent_posts.6 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.6.specific %}" class="index-article-title">{{ recent_posts.6.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.6.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.6.specific.author }}</span> | {{ recent_posts.6.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if recent_posts.7 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.7.specific %}" class="index-article-title">{{ recent_posts.7.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.7.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.7.specific.author }}</span> | {{ recent_posts.7.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+      {% if recent_posts.8 %}
+      <div class="tile has-background-grey-darker featured-tile">
+        <div class="text-padding text-compressed">
+            <p class="title"><a href="{% pageurl recent_posts.8.specific %}" class="index-article-title">{{ recent_posts.8.title }}</a></p>
+            <p class="has-text-weight-light has-text-grey">{{ recent_posts.8.specific.intro }}</p>
+            <p class="has-text-grey index-article-info"><span class="has-text-antics-orange">{{ recent_posts.8.specific.author }}</span> | {{ recent_posts.8.specific.date }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+
+
+<!-- Go through posts manually creating tile layout in rows -->
+
+
+  {% if all_posts.count > 9 %}
+  <center>
+    <a href="/blog/archives/" class="button-link">See older posts</a>
+  </center>
+    {% else %}
+    <p>No more posts</p>
+  {% endif %}
+
+</div>
+{% endblock %}
