@@ -15,4 +15,4 @@ try:
 except ImportError:
     pass
 
-ALLOWED_HOSTS = ['MikeHayward.pythonanywhere.com']
+ALLOWED_HOSTS = ['mikehayward.pythonanywhere.com']

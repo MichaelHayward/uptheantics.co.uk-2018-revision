@@ -1,0 +1,88 @@
+/* Applies a background colour to the blog post itself, in case we want to
+continue using an image or animated background */
+
+.blog-output {
+  background-color: rgb(36, 36, 36);
+  z-index: 1;
+}
+
+.blog-output .responsive-object {
+  padding-bottom: 0 !important;
+  display: flex;
+  justify-content: center;
+  background-color: #121212;
+}
+
+/* A dirty, temporary solution, but forces the rich text field to create line
+breaks where they exist in the blog post */
+
+.rich-text p::after,
+.rich-text h1::after,
+.rich-text h2::after,
+.rich-text h3::after,
+.rich-text h4::after,
+.rich-text h5::after,
+.rich-text h6::after{
+    content: "\A"; white-space: pre-line;
+}
+
+/*
+  Everything that is output as a post will have the .rich-text class.
+  We simply hook into that class and style the elements through that class
+*/
+
+.rich-text {
+  color: rgb(175, 175, 175);
+}
+
+.rich-text h2,
+.rich-text h3,
+.rich-text h4 {
+  color: rgb(230, 230, 230);
+}
+
+.rich-text h2 {
+  font-size: 1.75rem;
+}
+
+.rich-text h3 {
+  font-size: 1.15rem;
+}
+
+.rich-text h4 {
+  font-size: 1rem;
+}
+
+.rich-text a:hover {
+  color: white;
+}
+
+/* lists */
+
+.rich-text ol,
+.rich-text ul {
+  padding:.75rem;
+}
+
+.rich-text ul {
+  list-style: disc;
+}
+
+/* Images stuff here */
+.full-width {
+  width: 100%;
+  height: auto;
+}
+
+/* Buttons at the end of the blogpost - Return to blog, next article, etc */
+
+.apres-post-buttons { /* 'post' because these apply to Events as well */
+  margin-top:30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.apres-post-buttons a {
+  margin:.75rem;
+}

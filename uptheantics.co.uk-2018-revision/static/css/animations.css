@@ -1,0 +1,8 @@
+@keyframes loop-the-loop {
+    20%  {transform: rotateZ(-45deg);} /* rotate counter-clockwise */
+    100% {transform: rotateZ(360deg);} /* rotate clockwise */
+}
+
+.spinney-thing:hover {
+  animation: 0.7s 1 ease-in-out loop-the-loop;
+}
